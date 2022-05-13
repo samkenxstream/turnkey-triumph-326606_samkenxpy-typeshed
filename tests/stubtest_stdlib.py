@@ -38,9 +38,9 @@ def run_stubtest(typeshed_dir: Path) -> int:
         cmd += ["--allowlist", str(allowlist_dir / platform_allowlist)]
     if (allowlist_dir / combined_allowlist).exists():
         cmd += ["--allowlist", str(allowlist_dir / combined_allowlist)]
-    if sys.version_info[:2] != (3, 10):
+    if sys.version_info < (3, 10):
         # As discussed in https://github.com/python/typeshed/issues/3693, we only aim for
-        # positional-only arg accuracy for the latest non-beta Python version.
+        # positional-only arg accuracy for the latest Python version.
         cmd += ["--ignore-positional-only"]
     try:
         print(" ".join(cmd), file=sys.stderr)
