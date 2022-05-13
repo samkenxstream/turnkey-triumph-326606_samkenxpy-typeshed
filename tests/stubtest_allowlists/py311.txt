@@ -77,7 +77,6 @@ types.GenericAlias.__mro_entries__
 types.GenericAlias.__call__  # Would be complicated to fix properly, Any could silence problems. #6392
 types.MethodDescriptorType.__get__
 types.WrapperDescriptorType.__get__
-typing._SpecialForm.__mro_entries__
 typing.ForwardRef._evaluate
 typing.SupportsAbs.__init__
 typing.SupportsBytes.__init__
@@ -126,6 +125,20 @@ tkinter.EventType.__new__
 ssl.SSLContext.__new__
 ssl._create_unverified_context
 
+# undocumented vectorcall implementation details
+functools.partial.__vectorcalloffset__
+_operator.attrgetter.__vectorcalloffset__
+_operator.itemgetter.__vectorcalloffset__
+operator.attrgetter.__vectorcalloffset__
+operator.itemgetter.__vectorcalloffset__
+
+# typing module internals
+typing._SpecialForm.__mro_entries__
+typing.NewType.__mro_entries__
+typing.ParamSpec.__typing_subst__
+typing.TypeVar.__typing_subst__
+typing.TypeVarTuple.__typing_subst__
+
 # Exists at runtime, but missing from stubs
 _ast.Tuple.dims
 _codecs.unregister
@@ -139,15 +152,15 @@ _csv.Writer
 _imp.source_hash
 ast.Tuple.dims
 ast.main
-asynchat.__warningregistry__  # Removal planned for 3.12, can add if someone needs this
+asynchat.__warningregistry__  # Artefact of the fact that importing the module raises DeprecationWarning
 asyncio.AbstractEventLoop.connect_accepted_socket
 asyncio.events.AbstractEventLoop.connect_accepted_socket
 bdb.Breakpoint.clearBreakpoints
+distutils.command.build_ext.__warningregistry__  # Artefact of the fact that importing the module raises DeprecationWarning
 distutils.dist.DistributionMetadata.set_classifiers
 distutils.dist.DistributionMetadata.set_keywords
 distutils.dist.DistributionMetadata.set_platforms
 distutils.util.get_host_platform
-functools.partial.__vectorcalloffset__  # undocumented implementation detail
 multiprocessing.managers.SharedMemoryServer.create
 multiprocessing.managers.SharedMemoryServer.list_segments
 multiprocessing.managers.SharedMemoryServer.public
