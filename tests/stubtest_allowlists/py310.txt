@@ -150,6 +150,8 @@ distutils.dist.DistributionMetadata.set_keywords
 distutils.dist.DistributionMetadata.set_platforms
 distutils.util.get_host_platform
 functools.partial.__vectorcalloffset__  # undocumented implementation detail
+inspect.Signature.from_builtin  # Removed in 3.11, can add if someone needs this
+inspect.Signature.from_function  # Removed in 3.11, can add if someone needs this
 multiprocessing.managers.SharedMemoryServer.create
 multiprocessing.managers.SharedMemoryServer.list_segments
 multiprocessing.managers.SharedMemoryServer.public
@@ -158,8 +160,31 @@ multiprocessing.managers.SharedMemoryServer.shutdown
 multiprocessing.managers.SharedMemoryServer.track_segment
 pyexpat.XMLParserType.SkippedEntityHandler
 pyexpat.XMLParserType.intern
+tkinter.Tk.split  # method that comes from __getattr__ at runtime
 typing._SpecialForm.__call__
 unicodedata.UCD.is_normalized
 xml.parsers.expat.XMLParserType.SkippedEntityHandler
 xml.parsers.expat.XMLParserType.intern
 xml.sax.handler.LexicalHandler
+
+# Side effects from module initialization
+email.contentmanager.maintype
+email.contentmanager.subtype
+inspect.k
+inspect.mod_dict
+inspect.v
+json.encoder.i
+lib2to3.pgen2.grammar.line
+lib2to3.pgen2.grammar.name
+lib2to3.pgen2.grammar.op
+pydoc.Helper.symbol  # Loop variable in class https://github.com/python/typeshed/issues/6401#issuecomment-981178522
+pydoc.Helper.symbols_  # Loop variable in class https://github.com/python/typeshed/issues/6401#issuecomment-981178522
+pydoc.Helper.topic  # Loop variable in class https://github.com/python/typeshed/issues/6401#issuecomment-981178522
+_compat_pickle.excname
+
+# SpooledTemporaryFile implements IO except these methods (on 3.11 it implements them)
+# See also https://github.com/python/typeshed/pull/2452#issuecomment-420657918
+tempfile.SpooledTemporaryFile.__next__
+tempfile.SpooledTemporaryFile.readable
+tempfile.SpooledTemporaryFile.seekable
+tempfile.SpooledTemporaryFile.writable
