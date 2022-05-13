@@ -43,10 +43,12 @@ contextlib.AbstractContextManager.__class_getitem__
 dataclasses.field
 dataclasses.KW_ONLY
 enum.Enum._generate_next_value_
+enum.StrEnum.value  # read-only property at runtime but too magical for stubtest
 fractions.Fraction.__new__  # overload is too complicated for stubtest to resolve
 ftplib.FTP.trust_server_pasv_ipv4_address  # Dangerous to use, intentionally undocumented, intentionally missing from typeshed. #6154
 gettext.install
 hmac.new  # Stub is a white lie; see comments in the stub
+http.HTTPMethod.description  # actually a mutable attribute, but we pretend it's a property
 http.server.SimpleHTTPRequestHandler.__init__  # *args is expanded
 importlib.abc.Traversable.__init__  # Inherits __init__ from typing.Protocol
 importlib.metadata.PackageMetadata.__init__  # Inherits __init__ from typing.Protocol
