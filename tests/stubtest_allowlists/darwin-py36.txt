@@ -3,6 +3,8 @@ ftplib.FTP.trust_server_pasv_ipv4_address  # Dangerous to use, intentionally und
 pwd.getpwnam
 ssl.PROTOCOL_SSLv3  # Depends on openssl compilation
 ssl.RAND_egd  # Depends on openssl compilation
+distutils.command.bdist_msi  # msi is only available on windows
+webbrowser.MacOSXOSAScript.__init__
 
 # Exists at runtime, but missing from stubs
 ntpath.splitunc

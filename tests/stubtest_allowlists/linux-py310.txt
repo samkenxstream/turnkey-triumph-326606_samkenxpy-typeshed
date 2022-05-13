@@ -16,6 +16,7 @@ curses.color_pair
 signal.sigtimedwait
 signal.sigwaitinfo
 select.epoll.register
+distutils.command.bdist_msi  # msi is only available on windows
 
 # Exists at runtime, but missing from stubs
 distutils.command.build_ext.__warningregistry__
